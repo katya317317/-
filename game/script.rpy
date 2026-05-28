@@ -1,14 +1,23 @@
 ﻿# Игра: Тропы России — 16 народов
-# Упрощённая версия: один персонаж, один фон
+# Полная версия с эмоциями, очками и концовками
 
 define e = Character("Преподаватель Вера Павловна", who_color="#c0c0c0")
-define p = Character("Хранитель традиций", who_color="#ffd700")
-
-# Объявляем универсальные изображения
-image bg universal = "images/bg_universal.png"
-image elder neutral = "images/elder_neutral.png"
-image elder happy = "images/elder_happy.png"
-image elder angry = "images/elder_angry.png"
+define r = Character("Бабушка Марфа", who_color="#d3d3d3")
+define t = Character("Бабушка Гульшат", who_color="#90ee90")
+define ch = Character("Старейшина Аслан", who_color="#ffcc99")
+define b = Character("Акберди", who_color="#b0c4de")
+define y = Character("Айхал", who_color="#e0ffff")
+define cv = Character("Тетя Светлана", who_color="#f0e68c")
+define bu = Character("Баир", who_color="#87ceeb")
+define a = Character("Магомед", who_color="#f5deb3")
+define k = Character("Очир", who_color="#fffacd")
+define ka = Character("Миккел", who_color="#d8bfd8")
+define m = Character("Сана", who_color="#c1ffc1")
+define ck = Character("Рынтыргин", who_color="#b0e0e6")
+define n = Character("Ненецкий шаман", who_color="#ffdab9")
+define ev = Character("Верба", who_color="#ffe4e1")
+define ke = Character("Старый Керек", who_color="#e6e6fa")
+define it = Character("Ительмен Итэль", who_color="#ffdead")
 
 default points = 0
 default vocab = ""
@@ -19,28 +28,28 @@ label start:
     pause 1.0
     hide text
 
-    scene bg universal
+    scene bg classroom
     show teacher happy
     e "Ты студент-этнограф. Твоё задание — посетить 16 народов России и узнать их традиции."
     e "За каждый правильный ответ ты получишь балл и слово в словарь."
-    e "Перед тобой будут появляться хранители традиций каждого народа. Слушай внимательно!"
+    e "Если соберёшь максимум — я буду впечатлена. Поехали!"
 
-    call russian from _call_russian
-    call tatars from _call_tatars
-    call chechens from _call_chechens
-    call bashkirs from _call_bashkirs
-    call yakuts from _call_yakuts
-    call chuvash from _call_chuvash
-    call buryats from _call_buryats
-    call avars from _call_avars
-    call kalmyks from _call_kalmyks
-    call karelians from _call_karelians
-    call mordvins from _call_mordvins
-    call chukchi from _call_chukchi
-    call nenets from _call_nenets
-    call evens from _call_evens
-    call kereks from _call_kereks
-    call itelmens from _call_itelmens
+    call russian
+    call tatars
+    call chechens
+    call bashkirs
+    call yakuts
+    call chuvash
+    call buryats
+    call avars
+    call kalmyks
+    call karelians
+    call mordvins
+    call chukchi
+    call nenets
+    call evens
+    call kereks
+    call itelmens
 
     jump final
 
@@ -48,391 +57,392 @@ label start:
 # НАРОД 1: РУССКИЕ
 # ============================================
 label russian:
-    scene bg universal
-    show elder neutral
-    p "Я — хранитель русских традиций. Скажи, что символизирует 'хлеб-соль' при встрече гостя?"
+    scene bg russian
+    show babushka neutral
+    r "Мир вашему дому, гость дорогой! Присаживайся."
+    r "Скажи, что символизирует 'хлеб-соль' при встрече гостя?"
 
     menu:
         "Пожелание богатства":
             $ points += 0
-            show elder angry
-            p "Нет, хлеб-соль не только про деньги."
-        "Признание гостя посланником Бога (хлеб — тело, соль — душа)":
+            show babushka angry
+            r "Нет, хлеб-соль не только про деньги."
+        "Признание гостя посланником Бога":
             $ points += 1
             $ vocab += " Хлеб-соль"
-            show elder happy
-            p "Верно! Хлеб — жизнь, соль — душа. Ты молодец!"
+            show babushka happy
+            r "Верно! Хлеб — жизнь, соль — душа. Ты молодец!"
         "Охрана дома от злых духов":
             $ points += 0
-            show elder neutral
-            p "Это часть правды, но не всё. Ладно."
+            show babushka neutral
+            r "Это часть правды, но не всё. Ладно."
     return
 
 # ============================================
 # НАРОД 2: ТАТАРЫ
 # ============================================
 label tatars:
-    scene bg universal
-    show elder neutral
-    p "Я — хранитель татарских традиций. Что ты знаешь о 'тастымал' — свадебном полотенце?"
+    scene bg kazan
+    show gulchat neutral
+    t "Әйдә, кер! Что ты знаешь о 'тастымал' — свадебном полотенце?"
 
     menu:
         "Чтобы вытирать руки":
             $ points += 0
-            show elder angry
-            p "Нет, это не просто полотенце!"
-        "Символ чистоты и начала новой жизни":
+            show gulchat angry
+            t "Нет, это не просто полотенце!"
+        "Символ чистоты и новой жизни":
             $ points += 1
             $ vocab += " Тастымал"
-            show elder happy
-            p "Молодец! Тастымал — начало нового пути."
+            show gulchat happy
+            t "Молодец! Тастымал — начало нового пути."
         "Для защиты от сглаза":
             $ points += 0
-            show elder neutral
-            p "Близко, но не точно. В следующий раз угадаешь."
+            show gulchat neutral
+            t "Близко, но не точно. В следующий раз угадаешь."
     return
 
 # ============================================
 # НАРОД 3: ЧЕЧЕНЦЫ
 # ============================================
 label chechens:
-    scene bg universal
-    show elder neutral
-    p "Я — хранитель чеченских традиций. Что такое 'къонахалла'?"
+    scene bg chechen
+    show aslan neutral
+    ch "Ассаламу алейкум! Что такое 'къонахалла'?"
 
     menu:
         "Гостеприимство":
             $ points += 0
-            show elder angry
-            p "Нет! Къонахалла — это не просто угостить."
-        "Кодекс чести мужчины: защита слабых, щедрость, верность слову":
+            show aslan angry
+            ch "Нет! Къонахалла — это не просто угостить."
+        "Кодекс чести мужчины":
             $ points += 1
             $ vocab += " Къонахалла"
-            show elder happy
-            p "Верно! Это выше закона. Ты понял суть."
+            show aslan happy
+            ch "Верно! Защита слабых, щедрость, верность слову."
         "Помощь соседям":
             $ points += 0
-            show elder neutral
-            p "Это только часть. Ты старался."
+            show aslan neutral
+            ch "Это только часть. Ты старался."
     return
 
 # ============================================
 # НАРОД 4: БАШКИРЫ
 # ============================================
 label bashkirs:
-    scene bg universal
-    show elder neutral
-    p "Я — хранитель башкирских традиций. Что означает обычай 'язы'?"
+    scene bg bashkir
+    show akberdi neutral
+    b "Һаумыһығыҙ! Что означает обычай 'язы'?"
 
     menu:
-        "Коня закапывали рядом с умершим":
+        "Коня закапывали рядом":
             $ points += 0
-            show elder angry
-            p "Нет! Это не так."
-        "Ритуал с веткой берёзы — дух коня уходит в небо":
+            show akberdi angry
+            b "Нет! Это не так."
+        "Ритуал с веткой берёзы для духа коня":
             $ points += 1
             $ vocab += " Язы"
-            show elder happy
-            p "Эйее! Ветка берёзы — чтобы душа поднялась кухам."
-        "Коня приносили в жертву и съедали на поминках":
+            show akberdi happy
+            b "Эйее! Ветка берёзы — чтобы душа поднялась к духам."
+        "Коня приносили в жертву и съедали":
             $ points += 0
-            show elder neutral
-            p "Нет, мясо коня в такие дни не едят."
+            show akberdi neutral
+            b "Нет, мясо коня в такие дни не едят."
     return
 
 # ============================================
 # НАРОД 5: ЯКУТЫ
 # ============================================
 label yakuts:
-    scene bg universal
-    show elder neutral
-    p "Я — хранитель якутских традиций. Что такое 'алгыс'?"
+    scene bg yakut
+    show aykhal neutral
+    y "Дорообо! Что такое 'алгыс'?"
 
     menu:
-        "Песня-молитва шамана для духов природы":
+        "Песня шамана для духов":
             $ points += 1
             $ vocab += " Алгыс"
-            show elder happy
-            p "Верно! Алгыс — благословение духам: Огня, Воды, тайги."
-        "Оберег из шкуры оленя":
+            show aykhal happy
+            y "Верно! Алгыс — благословение духам природы."
+        "Оберег из шкуры":
             $ points += 0
-            show elder angry
-            p "Нет, алгыс — это действие, а не вещь."
+            show aykhal angry
+            y "Нет, алгыс — это действие, а не вещь."
         "Танец вокруг костра":
             $ points += 0
-            show elder neutral
-            p "Танец — осуохай, а алгыс — слова шамана."
+            show aykhal neutral
+            y "Танец — осуохай, а алгыс — слова шамана."
     return
 
 # ============================================
 # НАРОД 6: ЧУВАШИ
 # ============================================
 label chuvash:
-    scene bg universal
-    show elder neutral
-    p "Я — хранитель чувашских традиций. Зачем закапывали монеты на углах нового дома?"
+    scene bg chuvash
+    show svetlana neutral
+    cv "Салам! Зачем чуваши закапывали монеты на углах нового дома?"
 
     menu:
         "Чтобы дом был богатым":
             $ points += 0
-            show elder angry
-            p "Нет! Это не главная причина."
+            show svetlana angry
+            cv "Нет! Это не главная причина."
         "Чтобы задобрить духа земли 'Йĕрĕх'":
             $ points += 1
             $ vocab += " Йĕрĕх"
-            show elder happy
-            p "Верно! Сначала просишь разрешения у хозяина земли."
+            show svetlana happy
+            cv "Верно! Сначала просишь разрешения у хозяина земли."
         "Чтобы откупиться от воров":
             $ points += 0
-            show elder neutral
-            p "Нет, но ты попытался."
+            show svetlana neutral
+            cv "Нет, но ты попытался."
     return
 
 # ============================================
 # НАРОД 7: БУРЯТЫ
 # ============================================
 label buryats:
-    scene bg universal
-    show elder neutral
-    p "Я — хранитель бурятских традиций. Что такое 'обоо'?"
+    scene bg buryat
+    show bair neutral
+    bu "Амар мэндэ! Что такое 'обоо'?"
 
     menu:
         "Алтарь для молений":
             $ points += 0
-            show elder angry
-            p "Нет! Обоо — это не алтарь."
-        "Каменная куча на перевалах с синими хадаками":
+            show bair angry
+            bu "Нет! Обоо — это не алтарь."
+        "Каменная куча с синими хадаками":
             $ points += 1
             $ vocab += " Обоо"
-            show elder happy
-            p "Правильно! Жилище хозяина местности."
-        "Палатка для жертвоприношений":
+            show bair happy
+            bu "Правильно! Жилище хозяина местности."
+        "Палатка для жертв":
             $ points += 0
-            show elder neutral
-            p "Нет, это груда камней."
+            show bair neutral
+            bu "Нет, это груда камней."
     return
 
 # ============================================
 # НАРОД 8: АВАРЦЫ
 # ============================================
 label avars:
-    scene bg universal
-    show elder neutral
-    p "Я — хранитель аварских традиций. Зачем кладут ножницы, сахар и иглу перед ребёнком?"
+    scene bg avar
+    show magomed neutral
+    a "Баркала! Зачем кладут ножницы, сахар и иглу перед ребёнком?"
 
     menu:
-        "Чтобы ребёнок выбрал будущую профессию":
+        "Чтобы выбрать профессию":
             $ points += 1
             $ vocab += " Первый шаг"
-            show elder happy
-            p "Молодец! Что схватит — тем и будет заниматься."
-        "Для защиты от злых духов":
+            show magomed happy
+            a "Молодец! Что схватит — тем и будет заниматься."
+        "Для защиты от духов":
             $ points += 0
-            show elder angry
-            p "Нет! Это ритуал выбора."
+            show magomed angry
+            a "Нет! Это ритуал выбора."
         "Для веселья гостей":
             $ points += 0
-            show elder neutral
-            p "Обычай серьёзный, не для забавы."
+            show magomed neutral
+            a "Обычай серьёзный, не для забавы."
     return
 
 # ============================================
 # НАРОД 9: КАЛМЫКИ
 # ============================================
 label kalmyks:
-    scene bg universal
-    show elder neutral
-    p "Я — хранитель калмыцких традиций. Что делали с 'молоком волчицы'?"
+    scene bg kalmyk
+    show ochir neutral
+    k "Мендвт! Что делали с 'молоком волчицы'?"
 
     menu:
-        "Кропили юрту для призыва духа-воина Окон-Тенгри":
+        "Кропили юрту для духа Окон-Тенгри":
             $ points += 1
             $ vocab += " Окон-Тенгри"
-            show elder happy
-            p "Зөв! Окон-Тенгри — бог-воин. Обряд делали перед битвой."
+            show ochir happy
+            k "Зөв! Окон-Тенгри — бог-воин."
         "Пили, чтобы стать храбрым":
             $ points += 0
-            show elder angry
-            p "Нет! Это легенда, ритуал был сложнее."
+            show ochir angry
+            k "Нет! Это легенда."
         "Кормили собак":
             $ points += 0
-            show elder neutral
-            p "Нет, собаки здесь ни при чём."
+            show ochir neutral
+            k "Нет, собаки здесь ни при чём."
     return
 
 # ============================================
 # НАРОД 10: КАРЕЛЫ
 # ============================================
 label karelians:
-    scene bg universal
-    show elder neutral
-    p "Я — хранитель карельских традиций. Зачем вешали лапоть на берёзу при строительстве бани?"
+    scene bg karelian
+    show mikkel neutral
+    ka "Terveh! Зачем вешали лапоть на берёзу при стройке бани?"
 
     menu:
-        "Чтобы духи не трогали баню":
+        "Чтобы духи не трогали":
             $ points += 0
-            show elder angry
-            p "Нет! Это не так."
-        "Чтобы обмануть лешего — он думал, что хозяин ушёл":
+            show mikkel angry
+            ka "Нет! Это не так."
+        "Чтобы обмануть лешего":
             $ points += 1
             $ vocab += " Лапоть обман"
-            show elder happy
-            p "Мудрый гость! Леший не войдёт, если видит лапоть."
+            show mikkel happy
+            ka "Мудрый гость! Леший думал, что хозяин ушёл."
         "Для отпугивания медведей":
             $ points += 0
-            show elder neutral
-            p "Нет, мишки любопытны."
+            show mikkel neutral
+            ka "Нет, мишки любопытны."
     return
 
 # ============================================
 # НАРОД 11: МОРДВА
 # ============================================
 label mordvins:
-    scene bg universal
-    show elder neutral
-    p "Я — хранитель мордовских традиций. Что символизировала свеча на свадьбе?"
+    scene bg mordovian
+    show sana neutral
+    m "Шумбрат! Что символизировала свеча на свадьбе?"
 
     menu:
-        "Символ чистоты. Гасили после трёх ночей для духов предков":
+        "Символ чистоты, гасили для духов предков":
             $ points += 1
             $ vocab += " Озкс"
-            show elder happy
-            p "Верно! Свеча — огонь новой семьи."
+            show sana happy
+            m "Верно! Свеча — огонь новой семьи."
         "Чтобы не сгорел дом":
             $ points += 0
-            show elder angry
-            p "Нет, это ритуал, а не безопасность."
+            show sana angry
+            m "Нет, это ритуал, а не пожарная безопасность."
         "Знак бога Солнца":
             $ points += 0
-            show elder neutral
-            p "Солнце — отдельный обряд."
+            show sana neutral
+            m "Солнце — отдельный обряд."
     return
 
 # ============================================
 # НАРОД 12: ЧУКЧИ
 # ============================================
 label chukchi:
-    scene bg universal
-    show elder neutral
-    p "Я — хранитель чукотских традиций. Что нельзя делать в яранге?"
+    scene bg chukchi
+    show ryntyrgin neutral
+    ck "Эʼй! Что нельзя делать в яранге?"
 
     menu:
         "Не свистеть — духи утащат душу":
             $ points += 1
             $ vocab += " Священный рог"
-            show elder happy
-            p "Верно! Свист — язык душ умерших."
+            show ryntyrgin happy
+            ck "Верно! Свист — язык душ умерших."
         "Не шуметь":
             $ points += 0
-            show elder angry
-            p "Нет! Шуметь можно, а свистеть — нет."
+            show ryntyrgin angry
+            ck "Нет! Шуметь можно, а свистеть — нет."
         "Не трогать огонь":
             $ points += 0
-            show elder neutral
-            p "Огонь — живой, но свист страшнее."
+            show ryntyrgin neutral
+            ck "Огонь — живой, но свист страшнее."
     return
 
 # ============================================
 # НАРОД 13: НЕНЦЫ
 # ============================================
 label nenets:
-    scene bg universal
-    show elder neutral
-    p "Я — хранитель ненецких традиций. Почему нельзя убивать белого оленя без ритуала?"
+    scene bg nenets
+    show nenets_shaman neutral
+    n "Тава! Почему нельзя убивать белого оленя без ритуала?"
 
     menu:
-        "Белый олень — посланник неба, кожа — врата для духов предков":
+        "Он посланник неба, кожа — врата для духов":
             $ points += 1
             $ vocab += " Белый олень"
-            show elder happy
-            p "Правильно! Белый олень священен. Без ритуала — грех."
-        "Мясо белого оленя ядовито":
+            show nenets_shaman happy
+            n "Правильно! Белый олень священен."
+        "Едят сразу":
             $ points += 0
-            show elder angry
-            p "Нет! Оно не ядовито."
-        "Шаман запрещает":
+            show nenets_shaman angry
+            n "Нет! Без ритуала грех."
+        "Дарят шаману":
             $ points += 0
-            show elder neutral
-            p "Шаман проводит ритуал, но причина глубже."
+            show nenets_shaman neutral
+            n "Шаману отдают часть, не всё."
     return
 
 # ============================================
 # НАРОД 14: ЭВЕНЫ
 # ============================================
 label evens:
-    scene bg universal
-    show elder neutral
-    p "Я — хранитель эвенских традиций. Что запрещено женщинам на 'медвежьем празднике'?"
+    scene bg even
+    show verba neutral
+    ev "Торэ! Что запрещено женщинам на 'медвежьем празднике'?"
 
     menu:
         "Смотреть на кости медведя и перешагивать через оружие":
             $ points += 1
             $ vocab += " Медвежий праздник"
-            show elder happy
-            p "Верно! Женщина не может видеть кости — это обесчестит духа зверя."
+            show verba happy
+            ev "Верно! Женщина не может видеть кости — это обесчестит духа зверя."
         "Говорить вслух":
             $ points += 0
-            show elder angry
-            p "Нет! Говорить можно, но не всё."
+            show verba angry
+            ev "Нет! Говорить можно, но не всё."
         "Прикасаться к огню":
             $ points += 0
-            show elder neutral
-            p "Огонь — женское, тут другое правило."
+            show verba neutral
+            ev "Огонь — женское, тут другое."
     return
 
 # ============================================
 # НАРОД 15: КЕРЕКИ
 # ============================================
 label kereks:
-    scene bg universal
-    show elder neutral
-    p "Я — хранитель керекских традиций. Что нельзя делать с 'каменной бабой' на мысе?"
+    scene bg kerek
+    show stary_kerek neutral
+    ke "Йыкы! Что нельзя делать с 'каменной бабой'?"
 
     menu:
-        "Кидать в неё гарпун или плевать — иначе буря":
+        "Кидать гарпун или плевать":
             $ points += 1
             $ vocab += " Каменная баба"
-            show elder happy
-            p "Правильно! Каменная баба — хозяйка моря."
+            show stary_kerek happy
+            ke "Правильно! Каменная баба — хозяйка моря."
         "Садиться рядом":
             $ points += 0
-            show elder angry
-            p "Нет! Сидеть можно, если мирно."
-        "Красить её в белый цвет":
+            show stary_kerek angry
+            ke "Нет! Сидеть можно, если мирно."
+        "Красить в белый":
             $ points += 0
-            show elder neutral
-            p "Красить нечем было, запрета нет."
+            show stary_kerek neutral
+            ke "Красить нечем было, запрета нет."
     return
 
 # ============================================
 # НАРОД 16: ИТЕЛЬМЕНЫ
 # ============================================
 label itelmens:
-    scene bg universal
-    show elder neutral
-    p "Я — хранитель ительменских традиций. Какой ритуал нужно сделать при встрече с мёртвым китом?"
+    scene bg itelmen
+    show itel neutral
+    it "Ксай! Какой ритуал при встрече с мёртвым китом?"
 
     menu:
         "Поклониться и попросить прощения у духа Митгу":
             $ points += 1
             $ vocab += " Ксай"
-            show elder happy
-            p "Правильно! Кит — священное животное. Иначе дух заберёт удачу."
+            show itel happy
+            it "Правильно! Кит — священное животное."
         "Съесть кусок мяса":
             $ points += 0
-            show elder angry
-            p "Нет! Нельзя, пока дух не успокоишь."
+            show itel angry
+            it "Нет! Нельзя, пока дух не успокоишь."
         "Сбежать":
             $ points += 0
-            show elder neutral
-            p "Тогда удачи не видать."
+            show itel neutral
+            it "Тогда удачи не видать."
     return
 
 # ============================================
 # ФИНАЛ
 # ============================================
 label final:
-    scene bg universal
+    scene bg classroom
     show teacher happy
 
     e "Ты прошёл всех 16 народов!"
